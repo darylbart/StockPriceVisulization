@@ -1,31 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock Price Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            font-size: 18px;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .stock-plot {
+            margin-top: 20px;
+            width: 100%;
+        }
+        .stock-plot img {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <h1>Stock Price Tracker</h1>
     <form method="POST" action="/">
         <label for="ticker">Enter the stock symbol (e.g., AAPL):</label><br>
-        <input type="text" id="ticker" name="ticker" required><br><br>
+        <input type="text" id="ticker" name="ticker" required><br>
 
         <label for="start_date">Select the start date:</label><br>
-        <input type="date" id="start_date" name="start_date" required><br><br>
+        <input type="date" id="start_date" name="start_date" required><br>
 
         <label for="end_date">Select the end date:</label><br>
-        <input type="date" id="end_date" name="end_date" required><br><br>
+        <input type="date" id="end_date" name="end_date" required><br>
 
         <input type="checkbox" id="show_volume" name="show_volume">
-        <label for="show_volume">Show Volume</label><br><br>
+        <label for="show_volume">Show Volume</label><br>
 
         <label for="moving_average">Moving Average (days):</label><br>
-        <input type="number" id="moving_average" name="moving_average" min="1"><br><br>
+        <input type="number" id="moving_average" name="moving_average" min="1"><br>
 
         <input type="submit" value="Submit">
     </form>
 
     {% if img_uri %}
-        <h2>Stock Price Plot:</h2>
+        <h2 class="stock-plot">Stock Price Plot:</h2>
         <img src="data:image/png;base64,{{ img_uri }}" alt="Stock Price Plot">
     {% endif %}
 </body>
